@@ -32,6 +32,8 @@ Crie o ambiente Conda com:
 ```bash
 conda env create -f environment.yml
 conda activate clima
+```
+
 📊 Modelos testados
 
 Regressão Linear
