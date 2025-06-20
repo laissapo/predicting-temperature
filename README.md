@@ -16,14 +16,31 @@ Comparar diferentes modelos de regressão na tarefa de prever a temperatura méd
 
 📁 Estrutura
 
-- `data/raw/`: dados brutos da estação meteorológica
-- `data/processed/`: dados tratados e com variáveis preditoras criadas
-- `notebooks/01_EDA.ipynb`: análise exploratória e visualizações
-- `notebooks/02_regression_models.ipynb`: comparação entre modelos
-- `src/`: funções auxiliares para limpeza, engenharia de features e avaliação
-- `outputs/`: gráficos, métricas, modelos salvos
-- `README.md`: documentação do projeto
-- `environment.yml`: dependências Conda
+predicting-temperature/
+├── notebooks/
+│   ├── 01_EDA.ipynb
+│   ├── 02_modelagem_baseline.ipynb
+│   ├── 03_comparacao_modelos.ipynb
+├── src/
+│   ├── data.py           # funções para carregar/preprocessar dados
+│   ├── train.py          # função principal de treinamento
+│   ├── predict.py        # função de predição com novo dado
+│   ├── metrics.py        # funções de avaliação
+│   └── utils.py          # funções auxiliares
+├── scripts/              # scripts prontos para execução em terminal
+│   ├── train_model.py
+│   └── predict_model.py
+├── data/
+│   └── raw/              # dados originais
+│   └── processed/        # dados processados
+├── outputs/
+│   ├── figures/
+│   └── models/
+├── environment.yml       # dependências Conda
+├── .gitignore
+└── README.md             # documentação do projeto
+
+
 
 ⚙️ Ambiente
 
