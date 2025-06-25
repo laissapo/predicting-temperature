@@ -22,24 +22,23 @@ predicting-temperature/
 │   ├── 02_modelagem_baseline.ipynb
 │   ├── 03_comparacao_modelos.ipynb
 ├── src/
-│   ├── data.py           # funções para carregar/preprocessar dados
-│   ├── train.py          # função principal de treinamento
-│   ├── predict.py        # função de predição com novo dado
-│   ├── metrics.py        # funções de avaliação
-│   └── utils.py          # funções auxiliares
-├── scripts/              # scripts prontos para execução em terminal
+│   ├── data.py             # funções para carregar/preprocessar dados
+│   ├── train.py            # função principal de treinamento
+│   ├── predict.py          # função de predição com novo dado
+│   ├── metrics.py          # funções de avaliação
+│   └── utils.py            # funções auxiliares
+├── scripts/                # scripts prontos para execução em terminal
 │   ├── train_model.py
 │   └── predict_model.py
+│   └── nasa_rio_vermelho_download.py
 ├── data/
-│   └── raw/              # dados originais
-│   └── processed/        # dados processados
+│   └── raw/                # dados originais
 ├── outputs/
 │   ├── figures/
 │   └── models/
-├── environment.yml       # dependências Conda
+├── environment.yml         # dependências Conda
 ├── .gitignore
-└── README.md             # documentação do projeto
-
+└── README.md               # documentação do projeto
 
 
 ⚙️ Ambiente
@@ -88,6 +87,16 @@ Como interpretar métricas e comportamento dos modelos
 Como preparar e transformar dados temporais para predição
 
 Fundamentos da regularização, overfitting e ajuste de hiperparâmetros
+
+🛰️ Sobre a resolução dos dados da NASA POWER
+Fonte: https://power.larc.nasa.gov/docs/tutorials/
+
+Os dados meteorológicos fornecidos pela API NASA POWER possuem uma resolução espacial de aproximadamente 0,5° x 0,625°, o que equivale a cerca de 50 km x 50 km por célula de grade. Isso significa que, ao solicitar dados para coordenadas específicas (como o bairro Rio Vermelho, em Florianópolis), o valor retornado representa uma estimativa da célula geográfica correspondente, e não uma medição pontual exata do local.
+
+Além disso, a NASA recomenda evitar múltiplas requisições automatizadas para pontos muito próximos, pois podem retornar os mesmos dados. Neste projeto, foi feita apenas uma requisição pontual, respeitando essa diretriz.
+
+Por fim, é importante observar que os dados dos últimos 2 a 3 meses são preliminares e posteriormente substituídos por produtos de qualidade climática (“climate quality”). Para garantir maior confiabilidade, recomenda-se utilizar dados com pelo menos 2–3 meses de defasagem em relação à data atual.
+
 
 📚 Licença
 
