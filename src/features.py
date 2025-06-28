@@ -64,10 +64,18 @@ def add_rolling_features(df: pd.DataFrame) -> pd.DataFrame:
     df['precipitation_roll7'] = df['precipitation'].rolling(window=7).sum()
     return df
 
+def add_target_variable(df: pd.DataFrame, target_col: str = 'temperature') -> pd.DataFrame:
+    """
+    Adiciona a variável alvo (target) como a temperatura do dia seguinte.
+    """
+    df = df.copy()
+    df['target'] = df[target_col].shift(-1)
+    return df
+
 
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Aplica todas as etapas de limpeza e criação de features, compondo as funções anteriores.
+    Aplica todas as etapas de limpeza e criação de features, compondo as funções anteriores, e remove linhas com valores NaN
     """
     df = clean_and_rename_columns(df)
     df = add_date_index(df)
@@ -75,4 +83,6 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     df = add_temporal_variables(df)
     df = add_lag_features(df)
     df = add_rolling_features(df)
+    df = add_target_variable(df)
+    df = df.dropna(axis=0, how='any')
     return df
